@@ -12,10 +12,15 @@ public class StudentManager {
   public static void main(String[] args) {
     StudentManager manager = new StudentManager();
 
-    for (int i = 0; i < IDs.length; i++) {
-      Student student = manager.find(IDs[i]);
-      System.out.println("Student name " + student.getName());
+    try {
+      for (int i = 0; i < IDs.length; i++) {
+        Student student = manager.find(IDs[i]);
+        System.out.println("Student name " + student.getName());
+      }
+    } catch (IllegalArgumentException e) {
+
     }
+
 
   }
 }
