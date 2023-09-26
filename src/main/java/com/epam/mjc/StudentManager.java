@@ -12,15 +12,18 @@ public class StudentManager {
   public static void main(String[] args) {
     StudentManager manager = new StudentManager();
 
+
     try {
       for (int i = 0; i < IDs.length; i++) {
         Student student = manager.find(IDs[i]);
-        System.out.println("Student name " + student.getName());
+        if (student == null) {
+          throw new StudentNotFoundException("Could not find student with ID " + IDs[i]);
+        } else {
+          System.out.println("Student name " + student.getName());
+        }
       }
-    } catch (IllegalArgumentException e) {
-
+    } catch (StudentNotFoundException e) {
+        System.out.println(e);
     }
-
-
   }
 }
